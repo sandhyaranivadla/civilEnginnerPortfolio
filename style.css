@@ -1,0 +1,330 @@
+/* Base Variables & Reset */
+:root {
+    --primary: #1A365D; /* Navy Blue */
+    --secondary: #E28743; /* Construction Orange */
+    --text-main: #333333;
+    --text-light: #666666;
+    --bg-light: #F7FAFC;
+    --bg-white: #FFFFFF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+/* Navigation */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: var(--bg-white);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+
+.nav-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-main);
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--secondary);
+}
+
+/* Layout Classes */
+.page-section {
+    padding: 100px 20px 60px; /* Top padding accounts for navbar */
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.bg-light { background-color: var(--bg-light); }
+.bg-dark { background-color: var(--primary); }
+.text-white { color: var(--bg-white); }
+.text-center { text-align: center; }
+.mt-2 { margin-top: 2rem; }
+
+/* Typography */
+.main-title {
+    font-size: 3.5rem;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.sub-title {
+    font-size: 1.5rem;
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+    letter-spacing: 2px;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 2rem;
+    text-align: center;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--secondary);
+    margin: 10px auto 0;
+}
+
+/* Buttons and Links */
+.contact-badges {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.badge {
+    padding: 12px 24px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.badge.phone {
+    background: var(--secondary);
+    color: white;
+    border: 1px solid #1A365D;
+}
+
+.badge.email {
+    background: var(--secondary);
+    color: white;
+    border: 1px solid #1A365D;
+}
+
+.badge:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.footer-link {
+    color: var(--secondary);
+    font-size: 1.2rem;
+    text-decoration: none;
+}
+
+/* Cards & Grids */
+.card {
+    background: var(--bg-white);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    border-top: 4px solid var(--secondary);
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+}
+
+.feature-list {
+    list-style-type: none;
+}
+
+.feature-list li {
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 20px;
+}
+
+.feature-list li::before {
+    content: '✓';
+    color: var(--secondary);
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+/* Table styling */
+.table-responsive {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: var(--primary);
+    color: white;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .main-title { font-size: 2.5rem; }
+    .nav-links { display: none; /* Add a hamburger menu here for production */ }
+    .contact-badges { flex-direction: column; }
+}
+/* --- Horizontal Scrolling Project Carousel --- */
+.mb-2 {
+    margin-bottom: 2rem;
+}
+
+.project-carousel {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory; /* Makes it snap smoothly to the next card */
+    gap: 2rem;
+    padding: 1rem 0 2rem 0;
+    /* Hide scrollbar for a cleaner look */
+    scrollbar-width: none; /* For Firefox */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.project-carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel-card {
+    flex: 0 0 100%; /* Each card takes up 100% of the container width */
+    scroll-snap-align: center;
+    display: flex;
+    background: var(--bg-white);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border: 1px solid #eee;
+}
+
+/* Left side: Description */
+.carousel-info {
+    flex: 1; /* Takes up 50% of the space */
+    padding: 3rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-left: 6px solid var(--secondary);
+}
+
+.carousel-info h3 {
+    color: var(--primary);
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.carousel-info p {
+    font-size: 1.1rem;
+    color: var(--text-light);
+}
+
+/* Right side: Image */
+.carousel-image-wrapper {
+    flex: 1; /* Takes up the other 50% of the space */
+    min-height: 350px;
+}
+
+.carousel-image-wrapper .project-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Make it responsive for mobile phones */
+@media (max-width: 768px) {
+    .carousel-card {
+        flex-direction: column-reverse; /* Stacks text below image on small screens */
+    }
+    
+    .carousel-info {
+        border-left: none;
+        border-top: 6px solid var(--secondary);
+        padding: 2rem 1.5rem;
+    }
+    
+    .carousel-image-wrapper {
+        min-height: 250px;
+    }
+}
+/* Document Badges */
+.badge.document {
+    background: #E28743; /* Slate Gray */
+    color: white;
+    border: 1px solid #1A365D;
+}
+
+/* Ensure buttons wrap neatly on smaller screens */
+.contact-badges {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Allows buttons to drop to the next line on mobile */
+    gap: 1rem;
+    margin-top: 2rem;
+}
+/* Profile Picture */
+.profile-pic {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%; /* This is what makes it a perfect circle */
+    object-fit: cover; /* Ensures the image doesn't stretch */
+    border: 5px solid var(--primary); /* Orange border */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    margin-bottom: 1.5rem; /* Adds space between the photo and the name */
+}
+
+/* Make the profile picture slightly smaller on mobile phones */
+@media (max-width: 768px) {
+    .profile-pic {
+        width: 180px;
+        height: 180px;
+    }
+}
